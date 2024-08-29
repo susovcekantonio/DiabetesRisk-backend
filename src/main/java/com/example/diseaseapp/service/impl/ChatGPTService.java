@@ -35,7 +35,6 @@ public class ChatGPTService {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setBearerAuth(apiKey);
 
-        // Construct the prompt from the medical record
         String prompt = constructPromptFromMedicalRecord(medicalRecord);
 
         Map<String, Object> requestBody = new HashMap<>();
@@ -67,7 +66,8 @@ public class ChatGPTService {
                         "LDL: %.2f\n" +
                         "VLDL: %.2f\n" +
                         "BMI: %.2f\n" +
-                        "Please provide input on the chance of the patient having diabetes based on each of the following criteria, don't forget to account for the patient's gender representing different normal values:\n" +
+                        "Please provide input on the chance of the patient having diabetes based on each of the" +
+                        " following criteria, don't forget to account for the patient's gender representing different normal values:\n" +
                         "2. Age\n" +
                         "3. Urea\n" +
                         "4. Creatinine (Cr)\n" +

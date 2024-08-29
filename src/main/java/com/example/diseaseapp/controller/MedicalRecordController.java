@@ -49,9 +49,9 @@ public class MedicalRecordController {
     public ResponseEntity<MedicalRecord> getMedicalRecordById(@PathVariable Long recordId) {
         MedicalRecord medicalRecord = medicalRecordService.findById(recordId);
         if (medicalRecord == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // 404 Not Found
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        return ResponseEntity.ok(medicalRecord); // 200 OK with the record
+        return ResponseEntity.ok(medicalRecord);
     }
 
     @GetMapping("/{id}/medicalrecord")
@@ -63,7 +63,7 @@ public class MedicalRecordController {
 
         List<MedicalRecord> medicalRecords = medicalRecordService.getMedicalRecordsByPatientId(id);
         if (medicalRecords.isEmpty()) {
-            return ResponseEntity.noContent().build(); // Return 204 No Content if no records are found
+            return ResponseEntity.noContent().build();
         }
 
         return ResponseEntity.ok(medicalRecords);
@@ -78,7 +78,6 @@ public class MedicalRecordController {
         }
         medicalRecord.setPatient(patient);
 
-        // Get response from ChatGPT
         return chatGPTService.getChatGPTResponse(medicalRecord);
     }
 
@@ -90,8 +89,6 @@ public class MedicalRecordController {
         }
         medicalRecord.setPatient(patient);
 
-
-        // Get response from AzureML
         return azureMLService.predict(medicalRecord);
     }
 }

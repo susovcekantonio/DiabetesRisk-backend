@@ -30,7 +30,6 @@ public class AzureMLService {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", "Bearer " + azureMlApiKey);
 
-        // Construct the request body
         String requestBody = constructRequestBody(medicalRecord);
 
         HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
@@ -101,9 +100,9 @@ public class AzureMLService {
 
     private String evaluate(String name, double value, double low, double high, double above) {
         if (value < low) {
-            return String.format("%s is below average (%.2f). This could indicate a lower risk.\n", name, value);
+            return String.format("%s is below average (%.2f). This value can indicate.\n", name, value);
         } else if (value >= low && value <= high) {
-            return String.format("%s is average (%.2f). This indicates a normal range.\n", name, value);
+            return String.format("%s is average (%.2f). This value is within a normal range.\n", name, value);
         } else {
             return String.format("%s is above average (%.2f). This could indicate a higher risk.\n", name, value);
         }
