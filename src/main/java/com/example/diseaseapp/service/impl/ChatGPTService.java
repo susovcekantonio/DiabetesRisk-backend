@@ -57,18 +57,17 @@ public class ChatGPTService {
                 "Patient Medical Record: \n" +
                         "Gender: %s\n" +
                         "Age: %d\n" +
-                        "Urea: %.2f\n" +
-                        "Creatinine (Cr): %.2f\n" +
-                        "HbA1c: %.2f\n" +
-                        "Cholesterol (Chol): %.2f\n" +
-                        "Triglycerides (TG): %.2f\n" +
-                        "HDL: %.2f\n" +
-                        "LDL: %.2f\n" +
-                        "VLDL: %.2f\n" +
+                        "Urea: %.2f mmol/L\n" +
+                        "Creatinine (Cr): %.2f µmol/L\n" +
+                        "HbA1c: %.2f \n" +
+                        "Cholesterol (Chol): %.2f mmol/L\n" +
+                        "Triglycerides (TG): %.2f mmol/L\n" +
+                        "HDL: %.2f mmol/L\n" +
+                        "LDL: %.2f mmol/L\n" +
+                        "VLDL: %.2f mmol/L\n" +
                         "BMI: %.2f\n" +
                         "Please provide input on the chance of the patient having diabetes based on each of the" +
                         " following criteria, don't forget to account for the patient's gender representing different normal values:\n" +
-                        "2. Age\n" +
                         "3. Urea\n" +
                         "4. Creatinine (Cr)\n" +
                         "5. HbA1c\n" +

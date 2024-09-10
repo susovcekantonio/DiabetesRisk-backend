@@ -9,4 +9,6 @@ public interface MedicalRecordService {
     MedicalRecord saveMedicalRecord(MedicalRecord medicalRecord);
     public List<MedicalRecord> getMedicalRecordsByPatientId(Long patientId);
     public MedicalRecord findById(Long id);
+
+    void deleteMedicalRecord(Long recordId);
 }

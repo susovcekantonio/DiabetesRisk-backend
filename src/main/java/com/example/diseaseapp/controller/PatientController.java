@@ -7,10 +7,7 @@ import com.example.diseaseapp.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/patient")
@@ -23,6 +20,12 @@ public class PatientController {
     public String savePatient(@RequestBody Patient patient) {
         patientService.savePatient(patient);
         return "Patient saved successfully";
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletePatient(@PathVariable Long id) {
+        patientService.deletePatient(id);
+        return ResponseEntity.ok("Patient and associated medical records deleted successfully");
     }
 
     @PostMapping("/login")

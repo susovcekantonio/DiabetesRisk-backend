@@ -25,6 +25,11 @@ public class MedicalRecordServiceImpl implements MedicalRecordService {
     }
 
     @Override
+    public void deleteMedicalRecord(Long recordId) {
+        medicalRecordRepository.deleteById(recordId);
+    }
+
+    @Override
     public List<MedicalRecord> getMedicalRecordsByPatientId(Long patientId) {
         return medicalRecordRepository.findByPatientId(patientId);
     }

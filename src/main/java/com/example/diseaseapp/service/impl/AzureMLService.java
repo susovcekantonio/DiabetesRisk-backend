@@ -83,28 +83,28 @@ public class AzureMLService {
     private String generateEvaluationMessage(MedicalRecord medicalRecord, String scoredLabel) {
         StringBuilder evaluationMessage = new StringBuilder();
 
-        evaluationMessage.append(evaluate("BMI", medicalRecord.getBmi(), 18.5, 24.9, 30));
-        evaluationMessage.append(evaluate("HbA1c", medicalRecord.getHba1c(), 5.7, 6.4, 7));
-        evaluationMessage.append(evaluate("Cholesterol", medicalRecord.getChol(), 200, 239, 240));
-        evaluationMessage.append(evaluate("Triglycerides", medicalRecord.getTg(), 150, 199, 200));
-        evaluationMessage.append(evaluate("HDL", medicalRecord.getHdl(), 40, 60, 60));
-        evaluationMessage.append(evaluate("LDL", medicalRecord.getLdl(), 100, 159, 160));
-        evaluationMessage.append(evaluate("VLDL", medicalRecord.getVldl(), 2, 30, 30));
-        evaluationMessage.append(evaluate("Urea", medicalRecord.getUrea(), 7, 20, 50));
-        evaluationMessage.append(evaluate("Creatinine", medicalRecord.getCr(), 0.6, 1.2, 1.3));
+        evaluationMessage.append(evaluate("BMI", medicalRecord.getBmi(), 18.5, 24.9));
+        evaluationMessage.append(evaluate("HbA1c", medicalRecord.getHba1c(), 4,5.7 ));
+        evaluationMessage.append(evaluate("Cholesterol", medicalRecord.getChol(), 3.9, 5.2));
+        evaluationMessage.append(evaluate("Triglycerides", medicalRecord.getTg(), 0.5, 1.7));
+        evaluationMessage.append(evaluate("HDL", medicalRecord.getHdl(), 1, 10));
+        evaluationMessage.append(evaluate("LDL", medicalRecord.getLdl(), 0.2, 3));
+        evaluationMessage.append(evaluate("VLDL", medicalRecord.getVldl(), 0.2, 0.9));
+        evaluationMessage.append(evaluate("Urea", medicalRecord.getUrea(), 2.5, 7.1));
+        evaluationMessage.append(evaluate("Creatinine", medicalRecord.getCr(), 45, 100));
 
-        evaluationMessage.append(String.format("Predicted diabetes status: %s", scoredLabel.equals("true") ? "Positive" : "Negative"));
+        evaluationMessage.append(String.format("Possible status of having diabetes: %s", scoredLabel.equals("true") ? "High Risk" : "Low risk"));
 
         return evaluationMessage.toString();
     }
 
-    private String evaluate(String name, double value, double low, double high, double above) {
+    private String evaluate(String name, double value, double low, double high) {
         if (value < low) {
-            return String.format("%s is below average (%.2f). This value can indicate.\n", name, value);
+            return String.format("%s is below average (%.2f). This value can indicate a lower risk of having diabetes.\n", name, value);
         } else if (value >= low && value <= high) {
-            return String.format("%s is average (%.2f). This value is within a normal range.\n", name, value);
+            return String.format("%s is average (%.2f). This value is within a normal range and is not indicative of diabetes.\n", name, value);
         } else {
-            return String.format("%s is above average (%.2f). This could indicate a higher risk.\n", name, value);
+            return String.format("%s is above average (%.2f). This could indicate a higher risk of having diabetes.\n", name, value);
         }
     }
 }

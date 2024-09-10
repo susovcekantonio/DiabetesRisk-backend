@@ -32,7 +32,6 @@ public class MedicalRecordController {
 
     @PostMapping("/{id}/medicalrecord/save")
     public ResponseEntity<String> saveMedicalRecord(@PathVariable Long id, @RequestBody MedicalRecord medicalRecord) {
-        // Find the patient by ID
         Patient patient = patientService.findById(id);
         if (patient == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Patient not found");
@@ -67,6 +66,12 @@ public class MedicalRecordController {
         }
 
         return ResponseEntity.ok(medicalRecords);
+    }
+
+    @DeleteMapping("/medicalrecord/{id}")
+    public ResponseEntity<String> deleteMedicalRecord(@PathVariable Long id) {
+        medicalRecordService.deleteMedicalRecord(id);
+        return ResponseEntity.ok("Medical record deleted successfully");
     }
 
 
